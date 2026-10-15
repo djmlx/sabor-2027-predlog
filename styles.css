@@ -103,7 +103,7 @@ body {
 /* ---------- Naslovni deo ---------- */
 .sb-hero {
   display: grid;
-  grid-template-columns: minmax(0, 42fr) minmax(0, 58fr);
+  grid-template-columns: minmax(0, 45fr) minmax(0, 55fr);
   background: #fff;
   overflow: hidden;
 }
@@ -112,13 +112,20 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 56px 100px 56px var(--sb-side);
+  padding: 56px 100px 56px 40px;
 }
-.sb-hero__media img {
+/* SOYYA logo + logo Odeljenja za omladinu, jedan pored drugog */
+.sb-hero__logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
   width: 100%;
-  max-width: 400px;
+  max-width: 480px;
   animation: sb-logo-in 1s cubic-bezier(.2, .7, .2, 1) both;
 }
+.sb-hero__logo { width: 62%; min-width: 0; }
+.sb-hero__logo--dept { width: 34%; }
 
 .sb-hero__panel {
   position: relative;
@@ -152,7 +159,7 @@ body {
 .sb-arcs path:nth-child(5) { animation-delay: .48s; }
 .sb-arcs path:nth-child(6) { animation-delay: .6s; }
 
-.sb-hero__content { position: relative; max-width: 600px; }
+.sb-hero__content { position: relative; max-width: 640px; }
 
 .sb-hero__label {
   margin: 0 0 10px;
@@ -160,12 +167,21 @@ body {
   font-weight: 500;
   color: var(--sb-panel-label);
 }
+.sb-hero__label small {
+  display: block;
+  margin-top: 4px;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, .75);
+}
+.sb-hero__city { white-space: nowrap; }
+
 .sb-hero__title {
   margin: 0;
   font-family: var(--sb-heading);
   font-weight: 600;
-  font-size: 64px;
-  line-height: 1.05;
+  font-size: clamp(32px, 3.4vw, 45px);
+  line-height: 1.1;
 }
 .sb-hero__sub {
   margin: 12px 0 0;
@@ -227,6 +243,14 @@ body {
   margin: 0 0 20px;
   font-size: 17px;
   line-height: 1.75;
+}
+
+.sb-article .sb-welcome {
+  margin: 28px 0 0;
+  font-family: var(--sb-heading);
+  font-weight: 600;
+  font-size: 24px;
+  color: var(--sb-primary);
 }
 
 .sb-quote {
@@ -358,7 +382,7 @@ a.sb-files__link::after {
 .sb-js .sb-reveal.is-in .sb-stars use:nth-of-type(4) { animation-delay: .5s; }
 
 @media (prefers-reduced-motion: reduce) {
-  .sb-in, .sb-hero__media img { animation: none; }
+  .sb-in, .sb-hero__logos { animation: none; }
   .sb-arcs path { animation: none; stroke-dashoffset: 0; }
   .sb-js .sb-reveal { opacity: 1; transform: none; transition: none; }
   .sb-js .sb-reveal .sb-stars use { opacity: 1; animation: none !important; }
@@ -368,11 +392,11 @@ a.sb-files__link::after {
 @media (max-width: 900px) {
   .sb-hero { grid-template-columns: 1fr; }
   .sb-hero__media { padding: 40px 20px 64px; }
-  .sb-hero__media img { max-width: 300px; }
+  .sb-hero__logos { max-width: 380px; }
   .sb-hero__panel { padding: 56px 20px 64px; }
   .sb-hero__curve--side { display: none; }
   .sb-hero__curve--top { display: block; top: -39px; left: 0; width: 100%; height: 40px; }
-  .sb-hero__title { font-size: 46px; }
+  .sb-hero__title { font-size: 40px; }
   .sb-hero__sub { font-size: 19px; }
 
   .sb-section { padding: 60px 0; }
@@ -381,6 +405,9 @@ a.sb-files__link::after {
 }
 
 @media (max-width: 560px) {
+  /* uzak ekran: „SABOR 2027“ / „CHICAGO“ u dva reda, bez crte */
+  .sb-hero__city { display: block; }
+  .sb-hero__dash { display: none; }
   .sb-facts { display: block; }
   .sb-facts div { padding: 14px 0; }
   .sb-facts div + div { padding-left: 0; border-left: 0; border-top: 1px solid rgba(255, 255, 255, .22); }
